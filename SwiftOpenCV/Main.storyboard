@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RVL-if-d0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390.0799999999999" y="1789.4400000000001"/>
+            <point key="canvasLocation" x="4221.5" y="527.5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="pmj-rF-xKj">
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHg-ja-cnh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4128.6400000000003" y="1780.9066666666668"/>
+            <point key="canvasLocation" x="4221.5" y="1416.5"/>
         </scene>
         <!--Main Screen Controller Table View Controller-->
         <scene sceneID="Its-a6-PdF">
@@ -197,6 +197,15 @@
                                 </state>
                                 <connections>
                                     <action selector="saveCustomer:" destination="hzi-5g-kJr" eventType="touchUpInside" id="EDn-GQ-803"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLq-Os-fw9">
+                                <rect key="frame" x="56" y="420" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Szr-Kk-nUW" kind="push" id="hoS-LD-qX5"/>
                                 </connections>
                             </button>
                         </subviews>

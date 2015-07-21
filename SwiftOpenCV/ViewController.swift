@@ -205,21 +205,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var _image = image //scaleImage(image, maxDimension:1280)
         var ciimage = CIImage(image: image)
         var newImage = crop(ciimage)
-        var overlay = CIImage(color: CIColor(red: 1 , green: 0, blue: 0, alpha: 0.2))
-        overlay = overlay.imageByCroppingToRect(newImage!.extent())
-        overlay = overlay.imageByCompositingOverImage(newImage!)
-        _image = UIImage(CIImage: overlay!)!
+        
+        let filter = CIFilter(name: "CILanczosScaleTransform")
+        filter.setValue(newImage, forKey: "inputImage")
+        filter.setValue(1, forKey: "inputScale")
+        filter.setValue(1, forKey: "inputAspectRatio")
+        let outputImage = filter.valueForKey("outputImage") as CIImage
+        
+        /*var overlay = CIImage(color: CIColor(red: 1 , green: 0, blue: 0, alpha: 0.2))
+        overlay = overlay.imageByCroppingToRect(outputImage.extent())
+        overlay = overlay.imageByCompositingOverImage(outputImage)
+        _image = UIImage(CIImage: overlay!)!*/
+        
+        _image = UIImage(CIImage: outputImage)
         
         /*var ciimage = CIImage(image: _image)
         var newImage = performRectangleDetection(ciimage)
         _image = UIImage(CIImage: newImage!)!*/
         
+        /*let filter = CIFilter(name: "CILanczosScaleTransform")
+        filter.setValue(_image, forKey: "inputImage")
+        filter.setValue(0.5, forKey: "inputScale")
+        filter.setValue(1.0, forKey: "inputAspectRatio")
+        let outputImage = filter.valueForKey("outputImage") as CIImage
+        
+        let context = CIContext(options: nil)
+        let scaledImage = UIImage(CGImage: context.createCGImage(outputImage, fromRect: outputImage.extent()))*/
+        
         var fimage = _image.fixOrientation()
-        var size = CGSizeMake(fimage.size.width , fimage.size.height )
+        var size = CGSizeMake(fimage.size.width / 2, fimage.size.height / 2 )
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
         fimage.drawInRect(CGRectMake(0, 0, size.width, size.height))
         _image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
+        
+        
 
         /*var ciimage = CIImage(image: image)
         var newImage = crop(ciimage)
