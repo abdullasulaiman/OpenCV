@@ -7,3 +7,4 @@
 #import "MBProgressHUD.h"
 #import "UIImage+FixOrientation.h"
 #import "PointView.h"
+#import "MAImagePickerController/MAImagePickerController.h"

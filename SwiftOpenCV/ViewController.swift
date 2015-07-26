@@ -150,32 +150,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func cropBusinessCardForPoints(image: CIImage, topLeft: CGPoint, topRight: CGPoint, bottomLeft: CGPoint, bottomRight: CGPoint) -> CIImage {
         var businessCard: CIImage
-        businessCard = image.imageByApplyingFilter("CIPerspectiveTransformWithExtent",
+        businessCard = image.imageByCroppingToRect(image.extent())
+        businessCard = businessCard.imageByApplyingFilter("CIPerspectiveTransformWithExtent",
             withInputParameters: [
-                "inputExtent": CIVector(CGRect: image.extent()),
+                "inputExtent": CIVector(CGRect: businessCard.extent()),
                 "inputTopLeft": CIVector(CGPoint: topLeft),
                 "inputTopRight": CIVector(CGPoint: topRight),
                 "inputBottomLeft": CIVector(CGPoint: bottomLeft),
                 "inputBottomRight": CIVector(CGPoint: bottomRight)
             ])
-        businessCard = image.imageByCroppingToRect(businessCard.extent())
+        
         return businessCard
     }
-    
+
     func crop(image: CIImage) -> CIImage? {
         var resultImage: CIImage?
         var detector = prepareRectangleDetector();
-        // Get the detections
         let features = detector.featuresInImage(image)
         for feature in features as [CIRectangleFeature] {
             resultImage = cropBusinessCardForPoints(image, topLeft: feature.topLeft, topRight: feature.topRight,
                 bottomLeft: feature.bottomLeft, bottomRight: feature.bottomRight)
+            resultImage = ExtremeRegionFilter.correctPerspectiveForImage(image, withFeatures: feature)
         }
         return resultImage
     }
     
     func prepareRectangleDetector() -> CIDetector {
-        let options: [String : AnyObject] = [CIDetectorAccuracy: CIDetectorAccuracyHigh, CIDetectorAspectRatio: 2.0]
+        let options: [String : AnyObject] = [CIDetectorAccuracy: CIDetectorAccuracyHigh, CIDetectorAspectRatio: 0.5, CIDetectorTracking: true]
         return CIDetector(ofType: CIDetectorTypeRectangle, context: nil, options: options)
     }
     
@@ -187,13 +188,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 resultImage = drawHighlightOverlayForPoints(image, topLeft: feature.topLeft, topRight: feature.topRight,
                     bottomLeft: feature.bottomLeft, bottomRight: feature.bottomRight)
             }
-        
         return resultImage
     }
     
     func drawHighlightOverlayForPoints(image: CIImage, topLeft: CGPoint, topRight: CGPoint,
         bottomLeft: CGPoint, bottomRight: CGPoint) -> CIImage {
-            var overlay = CIImage(color: CIColor(red: 1 , green: 0, blue: 0, alpha: 0.2))
+            var overlay = CIImage(color: CIColor(red: 1 , green: 0, blue: 0, alpha: 0.6))
             overlay = overlay.imageByCroppingToRect(image.extent())
             return overlay.imageByCompositingOverImage(image)
     }
@@ -204,6 +204,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         selectedImage = UIImage(CIImage: newImage!)*/
         var _image = image //scaleImage(image, maxDimension:1280)
         var ciimage = CIImage(image: image)
+        ciimage = ExtremeRegionFilter.filteredImageUsingContrastFilterOnImage(ciimage)
         var newImage = crop(ciimage)
         
         let filter = CIFilter(name: "CILanczosScaleTransform")
@@ -233,11 +234,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let scaledImage = UIImage(CGImage: context.createCGImage(outputImage, fromRect: outputImage.extent()))*/
         
         var fimage = _image.fixOrientation()
-        var size = CGSizeMake(fimage.size.width / 2, fimage.size.height / 2 )
+        var size = CGSizeMake(fimage.size.width, fimage.size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 1.0)
         fimage.drawInRect(CGRectMake(0, 0, size.width, size.height))
         _image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext();
+        
         
         
 

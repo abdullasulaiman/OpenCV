@@ -35,6 +35,10 @@
 
 -(ExtremeRegionStat*)run : (UIImage*)img;
 
++(CIImage *)filteredImageUsingEnhanceFilterOnImage:(CIImage *)image;
++(CIImage *)filteredImageUsingContrastFilterOnImage:(CIImage *)image;
++(CIImage *)correctPerspectiveForImage:(CIImage *)image withFeatures:(CIRectangleFeature *)rectangleFeature;
+
 @end
 
 @interface ExtremeRegionGroup: NSObject
