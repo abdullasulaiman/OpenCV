@@ -1,6 +1,5 @@
 Tech Test - The Fare Calc Problem
 ==
-OpenCV and Tesseract OCR from Swift and iOS
 
 Problem Statement
 -
