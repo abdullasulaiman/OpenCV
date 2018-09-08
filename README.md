@@ -24,10 +24,10 @@ journey. E.g. Holburn to Earl’s Court is charged at £2.50.
 
 Stations            Zones
 -
-Holborn             1
-Earl’s Court        1, 2
-Wimbledon           3
-Hammersmith         2 
+- Holborn             1
+- Earl’s Court        1, 2
+- Wimbledon           3
+- Hammersmith         2 
 
 
 Journey                             Fares
