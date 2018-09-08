@@ -32,12 +32,12 @@ Stations            Zones
 
 Journey                             Fares
 -
-Anywhere in Zone 1                  £2.50
-Any one zone outside zone 1         £2.00
-Any two zones including zone 1      £3.00
-Any two zones excluding zone 1      £2.25
-Any three zones                     £3.30
-Any bus journey                     £1.70
+- Anywhere in Zone 1                £2.50
+- Any one zone outside zone 1         £2.00
+- Any two zones including zone 1      £3.00
+- Any two zones excluding zone 1      £2.25
+- Any three zones                     £3.30
+- Any bus journey                     £1.70
 
 The maximum possible fare is therefore £3.30.
 
@@ -50,7 +50,8 @@ Pre-requisite
     
 - Download the zip file
 - cd into the folder
-- open the folder in command propmt / terminal and type npm install
+- open the folder in command propmt / terminal 
+        - type "npm install"
        - This will install all dependencies required for running the application
 - enter "npm run test"
        - This will run the test for the problem statement
