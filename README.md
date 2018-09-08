@@ -55,6 +55,18 @@ Run the Application
 - enter "npm run test" ( This will run the test for the problem statement )
              
 
+✓ Bus Trip Validation (11ms)
+    ✓ Trip - Tube Holborn to Earl’s Court  (3ms)
+    ✓ Trip - Tube Earl’s court to Hammersmith  (2ms)
+    ✓ Trip - Tube Earl's Court to Wimbledon  (1ms)
+    ✓ Trip - Tube Hammersmith to Wimbledon  (1ms)
+    ✓ Trip -
+            - Tube Holborn to Earl’s Court
+            - 328 bus from Earl’s Court to Chelsea
+            - Tube Earl’s court to Hammersmith (26ms)
+    ✓ Trip - Invalid Trip WithOut SwipeOut  (1ms)
+    ✓ Trip - Invalid Trip With Out SwipeOut with Bus Trip Included (1ms)
+    ✓ Trip - Invalid Trip - No Money In the Card (1ms)
 
 
 
