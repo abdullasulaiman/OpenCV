@@ -50,7 +50,7 @@ Run the Application
     
 - Download the zip file
 - cd into the folder
-- open the folder in command propmt / terminal 
+- open the folder in command prompt / terminal 
 - type "npm install" ( This will install all dependencies required for running the application )
 - enter "npm run test" ( This will run the test for the problem statement )
              
