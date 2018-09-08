@@ -43,7 +43,7 @@ The maximum possible fare is therefore £3.30.
 
 Run the Application
 -
-Pre-requisite
+- Pre-requisite
     - The language is chosen in Javascript ( Typescript )
     - npm ( Node Package Manager ) should be globally installed
     - node should be installed - Latest will be preferred
@@ -51,7 +51,7 @@ Pre-requisite
 - Download the zip file
 - cd into the folder
 - open the folder in command propmt / terminal 
-        - type "npm install"
+       - type "npm install"
        - This will install all dependencies required for running the application
 - enter "npm run test"
        - This will run the test for the problem statement
