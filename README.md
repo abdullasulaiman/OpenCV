@@ -24,20 +24,20 @@ journey. E.g. Holburn to Earl’s Court is charged at £2.50.
 
 Stations            Zones
 -
-- Holborn             1
-- Earl’s Court        1, 2
-- Wimbledon           3
-- Hammersmith         2 
+- Holborn       -    1
+- Earl’s Court  -    1, 2
+- Wimbledon     -    3
+- Hammersmith   -    2 
 
 
 Journey                             Fares
 -
-- Anywhere in Zone 1                £2.50
-- Any one zone outside zone 1         £2.00
-- Any two zones including zone 1      £3.00
-- Any two zones excluding zone 1      £2.25
-- Any three zones                     £3.30
-- Any bus journey                     £1.70
+- Anywhere in Zone 1                  - £2.50
+- Any one zone outside zone 1         - £2.00
+- Any two zones including zone 1      - £3.00
+- Any two zones excluding zone 1      - £2.25
+- Any three zones                     - £3.30
+- Any bus journey                     - £1.70
 
 The maximum possible fare is therefore £3.30.
 
